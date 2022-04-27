@@ -20,7 +20,7 @@ function repeater(str, options) {
     if (str == null || str == undefined) {
       str = `${str}`
     } else if (str[Symbol.toPrimitive]) {
-      str = 'STRING_OR_DEFAULT';
+      str = str[Symbol.toPrimitive]();
     } else if (str.toString) {
       str = str.toString();
     }
@@ -41,7 +41,7 @@ function repeater(str, options) {
       if (options.addition == null || str == undefined) {
         options.addition = `${options.addition}`
       } else if (options.addition[Symbol.toPrimitive]) {
-        options.addition = 'STRING_OR_DEFAULT';
+        options.addition = options.addition[Symbol.toPrimitive]();
       } else if (options.addition.toString) {
         options.addition = options.addition.toString();
       }
